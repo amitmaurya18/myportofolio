@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+</head>
+
+<body>
+  <div class="container">
+    <div class="container1">
+      <div class="sidebar">
+        <nav>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="intro.html">My Intro</a></li>
+            <li><a href="service.html">Service</a></li>
+            <li><a href="contact.html">Contact me</a></li>
+          </ul>
+          <ul class="side">
+            <a href="resume.pdf" target="_blank"><button class="buttoncv">Download CV</button></a>
+          </ul>
+        </nav>
+      </div>
+      <div class="main1">
+        <div class="header">
+          <h1 class="log">Portfolio</h1>
+          <div class="social">
+            <a href="https://www.instaagram.com/amit_maurya_18/" class="fa fa-instagram"></a>
+            <a href="https://www.linkedin.com/in/amitmaurya18/" class="fa fa-linkedin"></a>
+            <a href="https://youtube.com/c/techinformation18" class="fa fa-youtube"></a>
+            <a href="https://twitter.com/amit_maurya_18?s=08" class="fa fa-twitter"></a>
+            <a href="https://github.com/amitmaurya18" class="fa fa-github"></a>
+          </div>
+        </div>
+        <div class="contactform">
+          <h1>Contact me for Work/Genral Enquiry</h1>
+          <form class="gform pure-form pure-form-stacked" method="POST" data-email="amitmaurya.aps@gmail.com"
+            action="https://script.google.com/macros/s/AKfycbzekirZlrWcV0ApbLiLgKsMwKYHcyp_PvsAEmfCqEH9HyuZLGyD4NkvDTWGi9ZxXJr4/exec">
+            <div class="form-group">
+              <label for="clintname">Name</label>
+              <input type="name" name="Name" class="form-control" id="clintname" aria-describedby="emailHelp"
+                placeholder="Name" required />
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Phone Number</label>
+              <input type="phone" name="Phone Number" class="form-control" id="exampleInputPassword1"
+                placeholder="Phone Number" required />
+            </div>
+            <div class="form-group">
+              <label for="clintemail">Email address</label>
+              <input type="email" name="Email" class="form-control" id="clintemail" aria-describedby="emailHelp"
+                placeholder="Enter email" required />
+              <div id="emailHelp" class="form-text text-muted">
+                We'll never share your email and phone with anyone else.
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="clintname">Enquiry</label>
+              <input type="Enquiry" name="Enquiry" class="form-control" id="clintname" aria-describedby="emailHelp"
+                placeholder="Enquiry" />
+            </div>
+            <div class="form-group" id="form-check">
+              <input type="checkbox" class="form-check-input" id="isclient" required />
+              <label class="form-check-label" for="isclient">I want you to work on a project with me</label>
+            </div>
+            <button type="submit" class="btn">Submit</button>
+            <!-- Thankyou_message --><br />
+            <div class="thankyou_message" style="
+                  display: none;
+                  background: none;
+                  border: 8px solid gray;
+                  border-radius: 40px;
+                  width: 400px;
+                  margin: 10px;
+                  padding-top: 20px;
+                  padding-bottom: 40px;
+                  padding-left: 20px;
+                  padding-right: 20px;
+                ">
+              <br /><br />
+              <h1>Thanks for contacting us!</h1>
+              <h1>*******</h1>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script data-cfasync="false" type="text/javascript">
+    (function () {
+      function validEmail(email) {
+        var re =
+          /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+        return re.test(email);
+      }
+
+      function validateHuman(honeypot) {
+        if (honeypot) {
+          console.log("Robot Detected!");
+          return true;
+        } else {
+          console.log("Welcome Human!");
+        }
+      }
+      function getFormData(form) {
+        var elements = form.elements;
+
+        var fields = Object.keys(elements)
+          .filter(function (k) {
+            return elements[k].name !== "honeypot";
+          })
+          .map(function (k) {
+            if (elements[k].name !== undefined) {
+              return elements[k].name;
+            } else if (elements[k].length > 0) {
+              return elements[k].item(0).name;
+            }
+          })
+          .filter(function (item, pos, self) {
+            return self.indexOf(item) == pos && item;
+          });
+
+        var formData = {};
+        fields.forEach(function (name) {
+          var element = elements[name];
+          formData[name] = element.value;
+          if (element.length) {
+            var data = [];
+            for (var i = 0; i < element.length; i++) {
+              var item = element.item(i);
+              if (item.checked || item.selected) {
+                data.push(item.value);
+              }
+            }
+            formData[name] = data.join(", ");
+          }
+        });
+
+        // add form-specific values into the data
+        formData.formDataNameOrder = JSON.stringify(fields);
+        formData.formGoogleSheetName = form.dataset.sheet || "Sheet1"; // default sheet name
+        formData.formGoogleSendEmail = form.dataset.email || ""; // no email by default
+
+        console.log(formData);
+        return formData;
+      }
+
+      function handleFormSubmit(event) {
+        event.preventDefault();
+        var form = event.target;
+        var data = getFormData(form);
+        if (data.email && !validEmail(data.email)) {
+          var invalidEmail = form.querySelector(".email-invalid");
+          if (invalidEmail) {
+            invalidEmail.style.display = "block";
+            return false;
+          }
+        } else {
+          disableAllButtons(form);
+          var url = form.action;
+          var xhr = new XMLHttpRequest();
+          xhr.open("POST", url);
+          xhr.setRequestHeader(
+            "Content-Type",
+            "application/x-www-form-urlencoded"
+          );
+          xhr.onreadystatechange = function () {
+            console.log(xhr.status, xhr.statusText);
+            console.log(xhr.responseText);
+            var formElements = form.querySelector(".form-elements");
+            if (formElements) {
+              formElements.style.display = "none"; // hide form
+            }
+            var thankYouMessage = form.querySelector(".thankyou_message");
+            if (thankYouMessage) {
+              thankYouMessage.style.display = "block";
+            }
+            return;
+          };
+          var encoded = Object.keys(data)
+            .map(function (k) {
+              return (
+                encodeURIComponent(k) + "=" + encodeURIComponent(data[k])
+              );
+            })
+            .join("&");
+          xhr.send(encoded);
+        }
+      }
+
+      function loaded() {
+        console.log("Contact form submission handler loaded successfully.");
+        var forms = document.querySelectorAll("form.gform");
+        for (var i = 0; i < forms.length; i++) {
+          forms[i].addEventListener("submit", handleFormSubmit, false);
+        }
+      }
+      document.addEventListener("DOMContentLoaded", loaded, false);
+
+      function disableAllButtons(form) {
+        var buttons = form.querySelectorAll("button");
+        for (var i = 0; i < buttons.length; i++) {
+          buttons[i].disabled = true;
+        }
+      }
+    })();
+  </script>
+</body>
+
+</html>
