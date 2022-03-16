@@ -12,9 +12,6 @@ body{
   margin: 15px;
   width: 88vw;
 }
-.side{
-  
-}
 .header{
   display: flex;
 }
@@ -90,8 +87,9 @@ body{
   margin: 20px;
   text-align: center;
   background-color: rgba(240, 42, 124, 0.5);
-  /* width: 400px; */
-  height: 100%;
+  width: auto;
+  height: auto;
+  /* padding: 20px; */
 }
 .container{
 
@@ -101,14 +99,16 @@ body{
 }
 .container2 {
   padding: 20px 16px;
-  /* margin: 10px; */ 
+  /* margin: 10px;  */
   text-align: center;
 }
 .sidebar{
+  /* position: absolute; */
   background-color: rgb(153, 147, 147);
   width: 200px;
   height: auto;
   font-family: 'Balsamiq Sans', cursive;
+  /* transition: transform 0.3s ease-in; */
 
 }
 .sidebar nav li{
@@ -238,3 +238,63 @@ img{
     width: 24px;
     margin: 3px 0;
   }
+.services, .teams{
+    color:#fff;
+    background: #111;
+}
+.services .title::before,
+.teams .title::before{
+    background: #fff;
+}
+.services .title::after,
+.teams .title::after{
+    background: #111;
+    content: " what i provide";
+}
+.title{
+  text-align: center;
+  font-family: 'Balsamiq Sans', cursive;
+}
+.serv-content{
+  display: flex;
+}
+.services .serv-content .card{
+    width: calc(33% - 20px);
+    background: #222;
+    text-align: center;
+    border-radius: 6px;
+    padding: 50px 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.services .serv-content .card:hover{
+    background: crimson;
+}
+.services .serv-content .card .box{
+    transition: all 0.3s ease;
+}
+.services .serv-content .card:hover .box{
+    transform: scale(1.05);
+}
+.services .serv-content .card i{
+    font-size: 50px;
+    color: crimson;
+    transition: color 0.3s ease;
+}
+.services .serv-content .card:hover i{
+    color: #fff;
+}
+.services .serv-content .card .text{
+    font-size: 25px;
+    font-weight: 500;
+    margin: 10px 0 7px 0;
+}
+
+  @media (max-width: 956px) {
+    *{
+      /* background-color: red; */
+    }
+    .sidebar{
+      transform: ;
+    }
+   }
